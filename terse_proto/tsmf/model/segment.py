@@ -32,3 +32,19 @@ class Segment2D(object):
             return np.dot(v_xy, v_xy) ** 0.5
         else:
             return abs(np.cross(v_e, v_xy))
+        
+    def length(self):
+        x, y = self.head.coord - self.rear.coord
+        return (x ** 2 + y ** 2) ** 0.5
+    
+    def midpoint(self):
+        midpoint = (self.head.coord + self.rear.coord) / 2
+        return midpoint
+            
+if __name__ == '__main__':
+    pg = Polygon2D([[[-1, -1], [1, -1], [1, 1], [-1, 1]],
+                     [[-0.5, -0.5], [-0.5, 0.5], [0.5, 0.5], [0.5, -0.5]]])
+    print pg.chains_heads[0].midpoint()
+    #print Segment2D([-1, -1]).midpoint()
+    
+        
